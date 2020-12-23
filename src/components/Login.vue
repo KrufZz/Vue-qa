@@ -27,6 +27,7 @@
                     username:'admin',
                     password:'123',
                     number:'',
+                    realname:''
                 },
                 responseResult:[]
             }
@@ -43,8 +44,8 @@
                     if (successCode.data.code === 200){
                        console.log("true")
                         this.number = successCode.data.number
-                        this.username = successCode.data.username
-                        this.$router.push({name:'Appindex',params:{countNumber:this.number,username:this.username}})
+                        this.realname = successCode.data.realname
+                        this.$router.push({name:'Appindex',params:{countNumber:this.number,realname:this.realname}})
 
                     }
                 })

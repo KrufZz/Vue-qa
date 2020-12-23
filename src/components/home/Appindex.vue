@@ -1,6 +1,6 @@
 <template>
  <div>
-     登录用户:{{username}}
+     登录用户:{{realname}}
      提问次数:{{countNumber}}
             <el-input type="text" v-model="issues.question" auto-complete="off" placeholder="提问"></el-input>
      <template>
@@ -34,6 +34,7 @@
             return {
                 username:'',
                 countNumber:'',
+                realname:'',
                 issues:{
                     question:''
                 },
@@ -41,7 +42,7 @@
             }
     },
         created() {
-            this.username=this.$route.params.username
+            this.realname=this.$route.params.realname
             this.countNumber=this.$route.params.countNumber
             console.log(this.username)
             console.log(this.countNumber)

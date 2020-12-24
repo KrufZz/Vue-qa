@@ -23,6 +23,8 @@
      <el-button type="primary" style="width: 20%;background: #505458;border: none" v-on:click="issue">查询</el-button>
      <br/><br/>
      <el-button type="primary" style="width: 20%;background: #505458;border: none" v-on:click="randomissue">随机</el-button>
+     <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+     &copy;
  </div>
 </template>
 

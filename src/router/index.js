@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../components/Login'
 import Appindex from "../components/home/Appindex";
+import Register from "../components/home/Register";
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,10 @@ const routes = [
     path:'/index',
     name:'Appindex',
     component:Appindex
+  },{
+  path:'/register',
+    name:'Register',
+    component:Register
   }
 ]
 

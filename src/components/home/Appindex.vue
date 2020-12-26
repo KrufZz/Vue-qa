@@ -2,7 +2,7 @@
  <div>
      登录用户:{{realname}}
      提问次数:{{countNumber}}
-            <el-input type="text" v-model="issues.question" auto-complete="off" placeholder="提问"></el-input>
+            <el-input type="text" v-model="issues.question" auto-complete="off" placeholder="提问" @keyup.enter.native="issue"></el-input>
      <template>
          <el-table v-if="answer==''?false:true"
                  :data="answer"

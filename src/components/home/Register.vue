@@ -18,6 +18,7 @@
     </body>
 </template>
 
+086f4e52b84c4d23a2a5e6fef9005562
 <script>
     export default {
         name: "Register",
@@ -52,8 +53,8 @@
                             })
                         }
                     })
-
             }
+
         }
     }
 

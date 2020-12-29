@@ -1,7 +1,7 @@
 <template>
  <div>
-     登录用户:{{realname}}
-     提问次数:{{countNumber}}
+     温度:{{weathers.temp}}
+     天气:{{weathers.text}}
             <el-input type="text" v-model="issues.question" auto-complete="off" placeholder="提问" @keyup.enter.native="issue"></el-input>
      <template>
          <el-table v-if="answer==''?false:true"
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+
     export default {
         name: "Appindex",
 
@@ -40,6 +41,10 @@
                 issues:{
                     question:''
                 },
+                weathers:{
+                    temp:'',
+                    text:''
+                },
                 answer:[]
             }
     },
@@ -48,6 +53,9 @@
             this.countNumber=this.$route.params.countNumber
             console.log(this.username)
             console.log(this.countNumber)
+        },
+        mounted() {
+            this.test()
         },
         methods:{
             issue(){
@@ -73,11 +81,23 @@
                             this.answer=resp.data
                         }
                     })
+            },
+            test() {
+                this.$axios
+                    .get('https://devapi.qweather.com/v7/weather/now?location=101040100&key=086f4e52b84c4d23a2a5e6fef9005562', {
+                    })
+                .then(resp =>{
+                    console.log(resp)
+                    this.weathers.text=resp.data.now.text
+                    this.weathers.temp=resp.data.now.temp
+                })
+            }
+
             }
 
         }
 
-    }
+
 </script>
 
 <style scoped>

@@ -4,6 +4,7 @@
      <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
      温度:{{weathers.temp}}
      天气:{{weathers.text}}
+     名字:{{username}}
             <el-input type="text" v-model="issues.question" auto-complete="off" placeholder="提问" @keyup.enter.native="issue"></el-input>
      <template>
          <el-table v-if="answer==''?false:true"
@@ -38,8 +39,6 @@
         data(){
             return {
                 username:'',
-                countNumber:'',
-                realname:'',
                 issues:{
                     question:''
                 },
@@ -51,10 +50,8 @@
             }
     },
         created() {
-            this.realname=this.$route.params.realname
-            this.countNumber=this.$route.params.countNumber
+            this.username=this.$route.params.loginUserName
             console.log(this.username)
-            console.log(this.countNumber)
         },
         mounted() {
             this.test()
@@ -63,7 +60,8 @@
             issue(){
                 this.$axios
                 .post('/issue',{
-                    question:this.issues.question
+                    question:this.issues.question,
+                    username:this.username
                 })
                 .then(resp =>{
                 if (resp.status ===200){
@@ -89,9 +87,12 @@
                     .get('https://devapi.qweather.com/v7/weather/now?location=101040100&key=086f4e52b84c4d23a2a5e6fef9005562', {
                     })
                 .then(resp =>{
+
                     console.log(resp)
-                    this.weathers.text=resp.data.now.text
-                    this.weathers.temp=resp.data.now.temp
+                    if (resp.data.code == 200){
+                        this.weathers.text=resp.data.now.text
+                        this.weathers.temp=resp.data.now.temp
+                    }
                 })
             }
 

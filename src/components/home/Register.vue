@@ -18,7 +18,6 @@
     </body>
 </template>
 
-086f4e52b84c4d23a2a5e6fef9005562
 <script>
     export default {
         name: "Register",
@@ -47,8 +46,8 @@
                                 confirmButtonText: '确定'
                             })
                             _this.$router.replace('/login')
-                        } else {
-                            this.$alert(resp.data.message, '提示', {
+                        } else if(resp.data.code === 400) {
+                            this.$alert(resp.data.data, '提示', {
                                 confirmButtonText: '确定'
                             })
                         }

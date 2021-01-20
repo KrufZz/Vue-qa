@@ -24,7 +24,7 @@
         data(){
             return {
                 loginForm: {
-                    username:'admin',
+                    username:'zt',
                     password:'123',
                     number:'',
                     realname:''
@@ -46,6 +46,11 @@
                         this.username = successCode.data.data
                         this.$router.push({name:'Appindex',params:{loginUserName:this.username}})
 
+                        // eslint-disable-next-line no-empty
+                    }else {
+                        this.$alert(successCode.data.data, '提示', {
+                            confirmButtonText: '确定'
+                        })
                     }
                 })
             }

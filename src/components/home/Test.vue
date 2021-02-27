@@ -8,8 +8,25 @@
 
 <script>
     export default {
-        name: "Test"
+        name: "Test",
+
+        methods:{
+            test(){
+                this.$axios
+                .get('/test',{
+                })
+                .then(resp =>{
+                        console.log(resp.data.data)
+                })
+            }
+
+        },
+        mounted() {
+            this.test()
+        }
+
     }
+
 </script>
 
 <style scoped>

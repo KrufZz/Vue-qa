@@ -58,14 +58,6 @@
         },
         methods:{
             issue(){
-
-                // eslint-disable-next-line no-empty
-                if(this.issue.question.length > 10){
-                    this.$alert('问题过长', 'Tips', {
-                        confirmButtonText: '确定'
-                    })
-                }
-
                 this.$axios
                 .post('/issue',{
                     question:this.issues.question,

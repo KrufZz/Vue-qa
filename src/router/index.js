@@ -4,6 +4,7 @@ import Login from '../components/Login'
 import Appindex from "../components/home/Appindex";
 import Register from "../components/home/Register";
 import Test from "../components/home/Test";
+import Order from "../components/home/Order";
 
 Vue.use(VueRouter)
 
@@ -38,7 +39,12 @@ const routes = [
     path:'/test',
     name:'Test',
     component:Test
+  },{
+    path:'/order',
+    name:'Order',
+    component:Order
   }
+
 ]
 
 const router = new VueRouter({

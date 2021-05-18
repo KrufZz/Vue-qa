@@ -11,6 +11,18 @@
             <el-input type="password" v-model="loginForm.password"
                       auto-complete="off" placeholder="密码" @keyup.enter.native="login"></el-input>
         </el-form-item>
+
+        <el-form-item prop="code">
+            <el-col :span="11">
+                <el-input placeholder="验证码" v-model="loginForm.code"></el-input>
+            </el-col>
+            <el-col class="line" :span="1">&nbsp;</el-col>
+            <el-col :span="8">
+                <!--加载验证码-->
+                <img width="160px" @click="getCode"   :src="codeUrl"/>
+            </el-col>
+        </el-form-item>
+
         <el-form-item style="width: 100%">
             <el-button type="primary"  round style="width: 100%;background: #505458;border: none" v-on:click="login">登录</el-button>
         </el-form-item>
@@ -23,26 +35,51 @@
         name: "Login",
         data(){
             return {
+                codeUrl:'',
                 loginForm: {
                     username:'zt',
                     password:'123',
                     number:'',
-                    realname:''
+                    realname:'',
+                    code:'',
+                    uid:''
                 },
                 responseResult:[]
             }
         },
+        created() {
+            this.getCode();
+        }
+        ,
         methods:{
             login(){
                 this.$axios
                 .post('/login',{
                     username:this.loginForm.username,
-                    password:this.loginForm.password
+                    password:this.loginForm.password,
+                    code:this.loginForm.code,
+                    uid:this.loginForm.uid
                 })
                 .then(successCode =>{
                     console.log(successCode)
+
+                    if (successCode.data.code == 401){
+                        console.log("401 error")
+                        this.getCode();
+
+                        this.$notify.error({
+                            title:'错误',
+                            message: successCode.data.data
+                        })
+                    }
                     if (successCode.data.code === 200){
-                       console.log("true")
+                        if (successCode.data.data  == 'taozi'){
+                            this.$router.push('/oubao')
+                            return
+                        }
+
+
+
                         this.username = successCode.data.data
                         this.$router.push({name:'Appindex',params:{loginUserName:this.username}})
 
@@ -53,6 +90,18 @@
                         })
                     }
                 })
+            },
+            getCode(){
+                console.log("!!!")
+                this.$axios
+                .get('/createImageCode',{
+                }).then(res =>{
+
+                    this.codeUrl = "data:image/gif;base64," + res.data.img;
+                    this.loginForm.uid=res.data.uid;
+                    console.log(this.uid)
+                    }
+                )
             }
         }
     }

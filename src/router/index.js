@@ -5,6 +5,7 @@ import Appindex from "../components/home/Appindex";
 import Register from "../components/home/Register";
 import Test from "../components/home/Test";
 import Order from "../components/home/Order";
+import OrderList from "../components/home/OrderList";
 
 Vue.use(VueRouter)
 
@@ -43,6 +44,10 @@ const routes = [
     path:'/order',
     name:'Order',
     component:Order
+  },{
+   path:'/oubao',
+    name:'OrderList',
+    component:OrderList
   }
 
 ]

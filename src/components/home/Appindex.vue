@@ -5,6 +5,7 @@
      温度:{{weathers.temp}}
      天气:{{weathers.text}}
      名字:{{username}}
+
             <el-input type="text" v-model="issues.question" auto-complete="off" placeholder="提问" @keyup.enter.native="issue"></el-input>
      <template>
          <el-table v-if="answer==''?false:true"
@@ -25,10 +26,11 @@
      <br/><br/>
      <button type="primary" v-on:click="issue">query now</button>
      <br/><br/>
-<!--     <el-button type="primary" style="width: 20%;background: #505458;border: none" v-on:click="randomissue">随机</el-button>-->
+     <el-button type="primary" style="width: 20%;background: #505458;border: none" v-on:click="randomissue">随机</el-button>
      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
      &copy;
  </div>
+
 </template>
 
 <script>
@@ -72,13 +74,11 @@
             },
             randomissue(){
                 this.$axios
-                    .post('/randomissue',{
-                        question:this.issues.question
+                    .get('/curl',{
                     })
                     .then(resp =>{
                         if (resp.status ===200){
                             console.log(resp.data)
-                            this.answer=resp.data
                         }
                     })
             },
@@ -94,7 +94,11 @@
                         this.weathers.temp=resp.data.now.temp
                     }
                 })
+            },
+            jump(){
+                this.$router.push('/oubao')
             }
+
 
             }
 

@@ -39,6 +39,7 @@
         <el-form-item>
             <el-button type="primary" @click="fillOrder">立即创建</el-button>
             <el-button>取消</el-button>
+            <el-button type="primary" @click="jump()">查看所有订单</el-button>
         </el-form-item>
     </el-form>
 </template>
@@ -77,6 +78,9 @@
                       })
                   }
               })
+            },
+            jump(){
+                this.$router.push('/oubao')
             }
         }
     }

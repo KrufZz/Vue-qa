@@ -6,6 +6,8 @@ import Register from "../components/home/Register";
 import Test from "../components/home/Test";
 import Order from "../components/home/Order";
 import OrderList from "../components/home/OrderList";
+import Index from "../components/home/Index";
+import Photo from "../components/common/PhotoCard"
 
 Vue.use(VueRouter)
 
@@ -48,8 +50,15 @@ const routes = [
    path:'/oubao',
     name:'OrderList',
     component:OrderList
-  }
-
+  },{
+   path:'/in',
+    name:"Index",
+    component:Index
+  },{
+   path:"/photo",
+    name:"Photo",
+    component:Photo
+   }
 ]
 
 const router = new VueRouter({

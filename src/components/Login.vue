@@ -1,6 +1,6 @@
 <template>
     <body id="poster">
-    <el-form class="login-container" label-position="left"
+    <el-form class="login-container bg-black" label-position="left"
              label-width="0px">
         <h3 class="login_title">questions and answers</h3>
         <el-form-item>
@@ -110,12 +110,14 @@
 <style scoped>
 
     #poster {
-        background:url("../assets/eva.jpg") no-repeat;
+        background:url("../assets/BG_A_Default_1.jpg") no-repeat;
         background-position: center;
         height: 100%;
         width: 100%;
         background-size: cover;
         position: fixed;
+        top: 0px;
+        left:0px;
     }
     body{
         margin: 0px;
